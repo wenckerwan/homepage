@@ -1,0 +1,41 @@
+.panel-cover__subtitle.interests {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px 18px;
+    margin: 12px auto;
+    max-width: 680px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.6;
+    letter-spacing: 0;
+    color: #e2e2e2;
+}
+
+.interests span {
+    white-space: nowrap;
+}
+
+.navigation--social a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+}
+
+.social-brand-icon {
+    width: 22px;
+    height: 22px;
+    filter: invert(1);
+}
+
+@media (max-width: 480px) {
+    .panel-cover__subtitle.interests {
+        max-width: 300px;
+        gap: 4px 14px;
+        font-size: 14px;
+    }
+}
