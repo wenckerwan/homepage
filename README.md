@@ -5,14 +5,15 @@
 
 ## 线上地址
 
-| 域名 | 说明 |
+| 入口 | 说明 |
 | --- | --- |
-| https://wencker.top | 主入口 |
+| https://wencker.top | 主入口（自有服务器） |
 | https://www.wencker.top | 同上 |
-| https://wencker.pro | 备用入口（经 Cloudflare） |
+| https://wencker.pro | 备用入口（经 Cloudflare 代理到同一源站） |
+| https://wenckerwan.github.io/homepage/ | **GitHub Pages 预览**，由 `main` 自动构建 |
 
-实际由自有服务器托管（DNS 直连 / Cloudflare 代理到源站），不走 GitHub Pages。
-GitHub Pages 的 `gh-pages` 分支仍保留为一份镜像。
+生产站点由自有服务器托管，DNS 直连 / Cloudflare 代理到源站。
+GitHub Pages 作为预览环境，`main` 每次 push 会自动重新构建，约一分钟生效。
 
 ## 目录结构
 
@@ -59,8 +60,8 @@ rsync -avz --delete \
 
 | 分支 | 用途 |
 | --- | --- |
-| `main` | 项目源码（当前默认分支） |
-| `gh-pages` | GitHub Pages 构建源，站点文件与 `main` 相同（仅 README 不同） |
+| `main` | 项目源码，默认分支；**GitHub Pages 由它构建** |
+| `gh-pages` | 早期 Pages 源的历史镜像，现已不参与发布，内容与 `main` 相同 |
 
 ## 许可证
 
