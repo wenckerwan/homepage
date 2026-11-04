@@ -1,4 +1,4 @@
-# wencker.top 个人主页
+# Wencker 个人主页
 
 纯静态个人主页，基于 [dmego/home.github.io](https://github.com/dmego/home.github.io) 模板定制。
 无需构建，克隆下来直接起个静态服务器就能跑。
@@ -7,13 +7,14 @@
 
 | 入口 | 说明 |
 | --- | --- |
-| https://wencker.top | 主入口（自有服务器） |
-| https://www.wencker.top | 同上 |
-| https://wencker.pro | 备用入口（经 Cloudflare 代理到同一源站） |
-| https://wenckerwan.github.io/homepage/ | **GitHub Pages 预览**，由 `main` 自动构建 |
+| https://wencker.pro | **主入口**，托管于 Cloudflare Pages |
+| https://www.wencker.pro | 同上 |
+| https://wenckerwan.github.io/homepage/ | **GitHub Pages**，`main` 每次 push 自动构建，约一分钟生效 |
 
-生产站点由自有服务器托管，DNS 直连 / Cloudflare 代理到源站。
-GitHub Pages 作为预览环境，`main` 每次 push 会自动重新构建，约一分钟生效。
+主页由 Cloudflare Pages 与 GitHub Pages 双重托管，两份内容保持一致。
+
+`wencker.top` 自 2026-11-04 起**不再承载本主页**，该域名已预留作其他项目。
+
 
 ## 目录结构
 
