@@ -28,3 +28,6 @@ analytics*
 .well-known/
 .well-known@
 .well-known*
+
+# Cloudflare Wrangler (Pages deploy cache)
+.wrangler/
