@@ -34,3 +34,24 @@ jobs:
           add: 'assets/json/images.js'
           message: "Update Bing images"
           github_token: ${{ secrets.GH_TOKEN }}
+
+      # 未配置 Cloudflare 凭据时跳过（避免产生失败记录），配置后自动生效
+      - name: Check Cloudflare credentials
+        id: cf
+        run: |
+          if [ -n "${{ secrets.CLOUDFLARE_API_TOKEN }}" ]; then
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+            echo "Cloudflare 凭据已配置，将同步到 wencker.pro"
+          else
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::未配置 CLOUDFLARE_API_TOKEN，跳过 Cloudflare Pages 部署"
+          fi
+
+      # wencker.pro 由 Cloudflare Pages（Direct Upload）承载，不与 Git 联动，
+      # 因此每次更新壁纸后需主动推一次，否则 .pro 上的壁纸会停在旧快照。
+      - name: Deploy to Cloudflare Pages
+        if: steps.cf.outputs.ready == 'true' && (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch')
+        run: npx --yes wrangler@3 pages deploy . --project-name wencker-home --branch main --commit-dirty=true
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
